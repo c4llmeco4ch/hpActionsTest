@@ -18,6 +18,8 @@ jobs:
     steps:
       - run: echo 'The triggering event was ${{ github.event_name }}'
       - run: echo 'The branch that caused this event was ${{ github.ref }}'
+
+      - uses: actions/checkout@v3.0.0
       - run: |
           echo 'Here is a list of the files in this directory...'
           tree
