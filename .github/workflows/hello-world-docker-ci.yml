@@ -1,0 +1,22 @@
+name: Hello World Docker CI
+
+on:
+  push:
+    paths: ./hello-world-docker-action/**
+  workflow_dispatch:
+
+jobs:
+  TestAction:
+    name: Test Hello World
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.0.0
+
+      - name: Run HW Action
+        id: run-hw
+        uses: ./hello-world-docker-action/
+        with:
+          who-to-greet: '@c4llmeco4ch'
+
+      - name: Output time
+        run: echo 'This action was run at ${{ steps.run-hw.outputs.time }}'
